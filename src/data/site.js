@@ -2,8 +2,6 @@
   companyName: 'CMA Soluciones Digitales SpA',
   shortName: 'CMA Digital',
   domain: 'cmadigital.cl',
-  email: 'contacto@cmadigital.cl',
-  phone: '+56 9 XXXX XXXX',
   location: 'Santiago, Chile',
   tagline: 'Soluciones digitales simples, confiables y bien integradas.',
   description:
