@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="250" height="200" viewBox="0 0 250 200" role="img" aria-labelledby="title desc">
+  <title id="title">CMA Digital logo</title>
+  <desc id="desc">CMA Digital logo with blue shutter-like isotipo, white CMA DIGITAL text, and DESDE 2026 tagline.</desc>
+  <defs>
+    <linearGradient id="bladeGrad" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#57E9F1"/>
+      <stop offset="55%" stop-color="#20C4F1"/>
+      <stop offset="100%" stop-color="#3561FF"/>
+    </linearGradient>
+  </defs>
+  <rect width="250" height="200" fill="#02004F"/>
+  <g>
+    <path d="M 120.12,12.21 L 169.72,34.30 Q 145.19,30.03 129.86,40.43 Q 123.74,50.04 119.39,28.07 Z" fill="url(#bladeGrad)"/><path d="M 170.87,35.88 L 176.55,89.88 Q 167.97,66.50 151.31,58.42 Q 139.92,57.93 156.77,43.18 Z" fill="url(#bladeGrad)"/><path d="M 175.75,91.67 L 131.82,123.58 Q 147.79,104.47 146.45,86.00 Q 141.18,75.89 162.38,83.10 Z" fill="url(#bladeGrad)"/><path d="M 129.88,123.79 L 80.28,101.70 Q 104.81,105.97 120.14,95.57 Q 126.26,85.96 130.61,107.93 Z" fill="url(#bladeGrad)"/><path d="M 79.13,100.12 L 73.45,46.12 Q 82.03,69.50 98.69,77.58 Q 110.08,78.07 93.23,92.82 Z" fill="url(#bladeGrad)"/><path d="M 74.25,44.33 L 118.18,12.42 Q 102.21,31.53 103.55,50.00 Q 108.82,60.11 87.62,52.90 Z" fill="url(#bladeGrad)"/>
+    <circle cx="125" cy="68" r="18" fill="#02004F"/>
+    <text x="125" y="75" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#FFFFFF">C</text>
+  </g>
+  <text x="125" y="148" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" letter-spacing="1.2" fill="#FFFFFF">CMA DIGITAL</text>
+  <text x="125" y="170" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="500" letter-spacing="3.2" fill="#2A7CFF">DESDE 2026</text>
+</svg>
