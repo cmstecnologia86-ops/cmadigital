@@ -1,12 +1,11 @@
-﻿import React from 'react'
+﻿import React, { useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import {
   ArrowRight,
   CheckCircle2,
   Code2,
   Globe2,
-  Mail,
-  MapPin,
+    MapPin,
   Network,
   ShieldCheck,
   Sparkles,
@@ -208,20 +207,81 @@ function Process() {
 }
 
 function Contact() {
+  const [form, setForm] = useState({
+    nombre: '',
+    correo: '',
+    empresa: '',
+    mensaje: '',
+  })
+
+  const [status, setStatus] = useState({
+    type: 'idle',
+    message: '',
+  })
+
+  const isSending = status.type === 'sending'
+
+  function updateField(event) {
+    const { name, value } = event.target
+
+    setForm((current) => ({
+      ...current,
+      [name]: value,
+    }))
+  }
+
+  async function submitForm(event) {
+    event.preventDefault()
+
+    setStatus({
+      type: 'sending',
+      message: 'Enviando mensaje...',
+    })
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(form),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok || !data.ok) {
+        throw new Error(data.message || 'No se pudo enviar el mensaje.')
+      }
+
+      setForm({
+        nombre: '',
+        correo: '',
+        empresa: '',
+        mensaje: '',
+      })
+
+      setStatus({
+        type: 'success',
+        message: 'Mensaje enviado correctamente. Te responderemos a la brevedad.',
+      })
+    } catch (error) {
+      setStatus({
+        type: 'error',
+        message: error.message || 'No se pudo enviar el mensaje. Intenta nuevamente más tarde.',
+      })
+    }
+  }
+
   return (
     <section id="contacto" className="section-shell contact-section">
       <div className="contact-card">
         <p className="eyebrow">Contacto</p>
         <h2>Conversemos sobre la solución digital que necesita tu empresa.</h2>
         <p>
-          Puedes escribirnos para solicitar información sobre sitios web, plataformas, formularios, integraciones o presencia digital corporativa.
+          Completa el formulario y revisaremos tu solicitud para responder con una orientación clara según el tipo de solución que necesites.
         </p>
 
         <div className="contact-lines">
-          <a href={`mailto:${site.email}`}>
-            <Mail size={18} />
-            {site.email}
-          </a>
           <span>
             <MapPin size={18} />
             {site.location}
@@ -229,13 +289,70 @@ function Contact() {
         </div>
       </div>
 
-      <div className="contact-visual">
-        <img src={site.images.contact} alt="Canal de contacto CMA Digital" />
+      <div className="form-card">
+        <form className="contact-form" onSubmit={submitForm}>
+          <label>
+            Nombre
+            <input
+              name="nombre"
+              value={form.nombre}
+              onChange={updateField}
+              placeholder="Nombre y apellido"
+              autoComplete="name"
+              required
+            />
+          </label>
+
+          <label>
+            Correo de respuesta
+            <input
+              name="correo"
+              type="email"
+              value={form.correo}
+              onChange={updateField}
+              placeholder="tu correo"
+              autoComplete="email"
+              required
+            />
+          </label>
+
+          <label>
+            Empresa
+            <input
+              name="empresa"
+              value={form.empresa}
+              onChange={updateField}
+              placeholder="Nombre de la empresa"
+              autoComplete="organization"
+            />
+          </label>
+
+          <label>
+            Mensaje
+            <textarea
+              name="mensaje"
+              value={form.mensaje}
+              onChange={updateField}
+              rows="5"
+              placeholder="Cuéntanos brevemente qué necesitas."
+              required
+            />
+          </label>
+
+          <button className="btn btn-primary" type="submit" disabled={isSending}>
+            {isSending ? 'Enviando...' : 'Enviar mensaje'}
+          </button>
+
+          {status.message && (
+            <p className={`form-status ${status.type}`}>
+              {status.message}
+            </p>
+          )}
+        </form>
       </div>
     </section>
   )
 }
-
 function Footer() {
   return (
     <footer className="footer">
@@ -264,3 +381,5 @@ function App() {
 }
 
 createRoot(document.getElementById('root')).render(<App />)
+
+

@@ -462,3 +462,78 @@ p {
     min-height: 360px;
   }
 }
+
+.form-card {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 30px;
+  box-shadow: 0 20px 58px rgba(0,0,0,0.2);
+  padding: clamp(26px, 5vw, 48px);
+}
+
+.contact-form {
+  display: grid;
+  gap: 16px;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 8px;
+  color: var(--text);
+  font-weight: 750;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 14px 16px;
+  background: rgba(3, 8, 16, 0.48);
+  color: var(--text);
+  font: inherit;
+  outline: none;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(174, 187, 208, 0.72);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px rgba(105, 215, 255, 0.12);
+}
+
+.contact-form button:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.form-status {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 16px;
+  font-size: 0.94rem;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.06);
+}
+
+.form-status.success {
+  color: #8af0c8;
+  border-color: rgba(138, 240, 200, 0.38);
+}
+
+.form-status.error {
+  color: #ffb4b4;
+  border-color: rgba(255, 180, 180, 0.38);
+}
+
+.form-status.sending {
+  color: var(--brand);
+}
